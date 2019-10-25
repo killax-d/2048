@@ -1,10 +1,12 @@
 package fr.killax.core;
 
 import java.io.FileReader;
+import java.nio.file.Paths;
 
 import com.google.gson.Gson;
 
 import fr.killax.config.AppSettings;
+import fr.killax.object.Tiles;
 
 public class App {
 	
@@ -17,7 +19,7 @@ public class App {
 		instance = this;
 		
 		try {
-			setSettings(new Gson().fromJson(new FileReader("settings.json"), AppSettings.class));
+			setSettings(new Gson().fromJson(new FileReader(Paths.get("src") + "/settings.json"), AppSettings.class));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -25,6 +27,8 @@ public class App {
 		window = new Window(settings.getWindowSettings().getTitle(),
 							settings.getWindowSettings().getWidth(), 
 							settings.getWindowSettings().getHeight());
+		
+		Tiles.init();
 	}
 	
 	public static App getInstance() {

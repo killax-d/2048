@@ -13,7 +13,7 @@ public class TextureLoader {
 	}
 	
 	public static BufferedImage load(String texture_name) {
-		return AssetsLoader.getImage(Paths.get("res", "textures") + texture_name);
+		return AssetsLoader.getImage(Paths.get("res", "textures") + "/" + texture_name);
 	}
 
 	/**
@@ -21,13 +21,16 @@ public class TextureLoader {
 	 * @param path
 	 * @return BufferedImage
 	 */
-	public static BufferedImage getTile(String path, int width, int height, int x, int y) {
-		BufferedImage tileset = AssetsLoader.getImage(path);
+	public static BufferedImage getTile(BufferedImage tileset, int width, int height, int x, int y) {
 		boolean validTexture = tileset.getWidth()>= width && tileset.getHeight() >= height;
 		if (validTexture) {
 			return tileset.getSubimage(x * width, y * height, width, height);
 		}
 		return NO_TEXTURE;
+	}
+	
+	public static BufferedImage getTile(String path, int width, int height, int x, int y) {
+		return getTile(AssetsLoader.getImage(path), width, height, x, y);
 	}
 	
 }

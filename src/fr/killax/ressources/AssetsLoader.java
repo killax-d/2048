@@ -4,6 +4,8 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.font.TextAttribute;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -34,7 +36,7 @@ public class AssetsLoader {
 		if (assets.containsKey(path)) {
 			return assets.get(path);
 		}
-		try (InputStream is = AssetsLoader.class.getResourceAsStream(path)) {
+		try (InputStream is = new FileInputStream(new File(path))) {
 			if (is != null) {
 				BufferedImage img = ImageIO.read(is);
 				assets.putIfAbsent(path, img);
@@ -57,7 +59,7 @@ public class AssetsLoader {
 		if (sounds.containsKey(path)) {
 			return sounds.get(path);
 		}
-		try (InputStream is = AssetsLoader.class.getResourceAsStream(path)) {
+		try (InputStream is = new FileInputStream(new File(path))) {
 			if (is != null) {
 				BufferedSound sound = new BufferedSound(is, type);
 				sounds.putIfAbsent(path, sound);
@@ -79,7 +81,7 @@ public class AssetsLoader {
 		if (fonts.containsKey(path)) {
 			return fonts.get(path).deriveFont(size);
 		}
-		try (InputStream is = AssetsLoader.class.getResourceAsStream(path)) {
+		try (InputStream is = new FileInputStream(new File(path))) {
 		    Hashtable<TextAttribute, Object> map = new Hashtable<TextAttribute, Object>();
 		    map.put(TextAttribute.KERNING, TextAttribute.KERNING_ON);
 		    map.put(TextAttribute.TRACKING, 0.08);

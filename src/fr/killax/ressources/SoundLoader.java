@@ -9,7 +9,7 @@ public class SoundLoader {
 	}
 	
 	public static BufferedSound load(String sound_name, SoundType type) {
-		return AssetsLoader.getSound(Paths.get("res", "sounds") + sound_name, type);
+		return AssetsLoader.getSound(Paths.get("res", "sounds") + "/" + sound_name, type);
 	}
 	
 }

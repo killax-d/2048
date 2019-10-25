@@ -9,7 +9,7 @@ public class FontLoader {
 	public static Font NO_FONT = new Font("Arial", Font.TRUETYPE_FONT, 12);
 	
 	public static Font load(String font_path, float size) {
-		return AssetsLoader.getFont(Paths.get("res", "fonts") + font_path, size);
+		return AssetsLoader.getFont(Paths.get("res", "fonts") + "/" + font_path, size);
 	}
 	
 }
