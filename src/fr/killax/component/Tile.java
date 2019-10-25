@@ -5,6 +5,7 @@ package fr.killax.component;
 import java.awt.Graphics;
 
 import fr.killax.object.Tiles;
+import fr.killax.ressources.FontLoader;
 
 public class Tile extends Component {
 
@@ -18,11 +19,21 @@ public class Tile extends Component {
 		power = 1;
 	}
 
+	public int getPower() {
+		return power;
+	}
+	
+	public void increasePower() {
+		power *= 2;
+	}
+	
 	@Override
 	public void draw(Graphics g) {
 //		g.setColor(color);
 //		g.fillRect(x, y, width, height);
 		g.drawImage(Tiles.getTile(power), x, y, width, height, null);
+		g.setFont(FontLoader.NO_FONT.deriveFont(24F));
+		g.drawString(String.valueOf(power), x + width/2, y + height/2);
 	}
 
 }

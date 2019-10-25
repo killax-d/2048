@@ -4,10 +4,10 @@ import java.awt.Graphics;
 
 public class Grid extends Component {
 	
-	private int cell_width;
-	private int cell_height;
+	protected int cell_width;
+	protected int cell_height;
 	
-	private GridCell[][] grid;
+	protected GridCell[][] grid;
 	
 	public Grid(int x, int y, int width, int height, int x_cell, int y_cell) {
 		super(x, y, width, height);

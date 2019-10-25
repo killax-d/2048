@@ -14,6 +14,10 @@ public class GridCell extends Component{
 	public void setComponent(Component component) {
 		this.component = component;
 	}
+	
+	public Component getComponent() {
+		return component;
+	}
 
 	@Override
 	public void draw(Graphics g) {
