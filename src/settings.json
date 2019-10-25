@@ -1,0 +1,18 @@
+{
+  "windowSettings": {
+    "title": "App",
+    "width": 1080,
+    "height": 720
+  },
+  "gameSettings": {
+    "theme": "default",
+    "controlSettings": {
+      "keys": {
+        "left": 2,
+        "right": 1,
+        "up": 4,
+        "down": 3
+      }
+    }
+  }
+}
