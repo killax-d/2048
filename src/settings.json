@@ -1,8 +1,8 @@
 {
   "windowSettings": {
     "title": "App",
-    "width": 1080,
-    "height": 720
+    "width": 800,
+    "height": 550
   },
   "gameSettings": {
     "theme": "default",

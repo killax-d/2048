@@ -19,4 +19,9 @@ public abstract class Component {
 	
 	public abstract void draw(Graphics g);
 
+	@Override
+	public String toString() {
+		return "Component [x=" + x + ", y=" + y + ", width=" + width + ", height=" + height + "]";
+	}
+
 }

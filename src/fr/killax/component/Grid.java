@@ -1,5 +1,6 @@
 package fr.killax.component;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class Grid extends Component {
@@ -18,7 +19,7 @@ public class Grid extends Component {
 		for (int i = 0; i < x_cell; i++) {
 			this.grid[i] = new GridCell[x_cell];
 			for(int j = 0; j < grid[i].length; j++) 
-				grid[i][j] = new GridCell(null, j * cell_width, i * cell_height, cell_width, cell_height);
+				grid[i][j] = new GridCell(null, j * cell_width, i * cell_height, cell_width, cell_height, 2);
 		}
 	}
 	
@@ -31,6 +32,10 @@ public class Grid extends Component {
 	}
 	
 	public void draw(Graphics g) {
+		g.setColor(Color.LIGHT_GRAY);
+		g.fillRect(x, y, width, height);
+		
+		g.setColor(Color.BLACK);
 		for(int y = 0; y < grid.length; y++) {
 			for (int x = 0; x < grid[0].length; x++) {
 				grid[y][x].draw(g);
@@ -44,10 +49,17 @@ public class Grid extends Component {
 	
 	public void pushToCell(Component component, int x, int y) {
 		this.grid[y][x].setComponent(component);
-		component.width = cell_width;
-		component.height = cell_height;
-		component.x = x * cell_width;
-		component.y = y * cell_height;
 	}
 
+	public String toString() {
+		String str = "";
+		for (int y = 0; y < height(); y++) {
+			str += "[";
+			for (int x = 0; x < width(); x++) {
+				str += (x == 0  ? "" : ", ") + grid[y][x].toString();
+			}
+			str += "]\n";
+		}
+		return str;
+	}
 }
